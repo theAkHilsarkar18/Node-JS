@@ -23,6 +23,8 @@ function multiply(value1, value2) {
     return value1 * value2;
 }
 
+// exports.modulus = (value1, value2) => value1 % value2;
+
 module.exports = {
     add, sub, div, multiply,
 };
