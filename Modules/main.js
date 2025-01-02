@@ -12,4 +12,6 @@ console.log(math.multiply(20, 10));
 
 // using multi exports
 
-console.log(math.modulus(10, 2));
+// console.log(math.modulus(10, 2));
+
+// console.log("Hello World");
