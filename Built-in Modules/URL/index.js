@@ -1,30 +1,49 @@
 const http = require("http");
 const url = require("url");
-const fs = require("fs");
 
 const server = http.createServer((request, response) => {
+    response.setHeader('Content-Type', 'application/json');
+    const parsedUrl = url.parse(request.url);
+    const params = new URLSearchParams(parsedUrl.query);
 
-    const log = Date.now() + " : New request received -> " + request.url + "\n";
+    console.log(parsedUrl);
 
-    fs.writeFile("./Built-in Modules/URL/log.txt", log, (err, data) => {
+    if (request.method == 'GET') {
+        response.statusCode = 200;
+        const json = JSON.stringify({
+            'method': "GET",
+            'message': 'Request Done !',
+            'status code': 200
+        });
+        response.end(json);
+    }
+    else if (request.method == 'POST' && parsedUrl.pathname == '/login') {
+        const auth = {};
+        const query = params.forEach((value, key) => {
+            auth.push(value);
+        });
 
-        switch (request.url) {
-            case '/':
-                response.end("Home Page");
-                break;
-            case '/about':
-                response.end("About Page");
-                break;
-            case '/profile':
-                response.end("Profile Page");
-                break;
-            default:
-                response.end("404 Not Foune d");
-        }
+        const json = JSON.stringify({
+            'method': "POST",
+            'message': 'Request Done !',
+            'status code': 201,
+            'auth': auth
+        });
 
-    });
+        response.statusCode = 201;
+        response.end(json);
+    }
+    else {
+        response.statusCode = 404;
+        const json = JSON.stringify({
+            'error': 'Not Found !',
+            'status code': 404
+        });
+        response.end(json);
+    }
 });
+
 
 server.listen(8000, () => {
-    console.log("Server started on http://localhost:8000");
-});
+    console.log("Your server is started on http://localhost:8000");
+}); 
