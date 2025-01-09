@@ -1,10 +1,14 @@
 const http = require("http");
 const url = require("url");
+const fs = require("fs");
 
 const server = http.createServer((request, response) => {
+
     response.setHeader('Content-Type', 'application/json');
+
     const parsedUrl = url.parse(request.url);
     const params = new URLSearchParams(parsedUrl.query);
+
 
     console.log(parsedUrl);
 
@@ -18,9 +22,11 @@ const server = http.createServer((request, response) => {
         response.end(json);
     }
     else if (request.method == 'POST' && parsedUrl.pathname == '/login') {
+
         const auth = {};
-        const query = params.forEach((value, key) => {
-            auth.push(value);
+        params.forEach((value, key) => {
+            console.log(key, value);
+            auth[key] = value;
         });
 
         const json = JSON.stringify({
@@ -30,6 +36,9 @@ const server = http.createServer((request, response) => {
             'auth': auth
         });
 
+        fs.appendFile('./Built-in Modules/URL/user.txt', JSON.stringify(auth) + "\n", (err) => {
+            console.log(err);
+        });
         response.statusCode = 201;
         response.end(json);
     }
