@@ -39,6 +39,10 @@ const server = http.createServer((request, response) => {
         fs.appendFile('./Built-in Modules/URL/user.txt', JSON.stringify(auth) + "\n", (err) => {
             console.log(err);
         });
+        const data = fs.readFile('./Built-in Modules/URL/user.txt', (err) => {
+            // console.log(err)
+        })
+        console.log(data);
         response.statusCode = 201;
         response.end(json);
     }
