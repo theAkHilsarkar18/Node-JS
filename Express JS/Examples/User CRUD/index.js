@@ -25,8 +25,6 @@ app.post('/users', (request, response) => {
     //     response.json({ error: 'All fields are required' });
     // }
 
-
-
     const body = request.body;
     users.push(body);
     console.log(body);
@@ -36,6 +34,8 @@ app.post('/users', (request, response) => {
 
 
 });
+
+//
 
 // to start server on 8000
 app.listen(8000, () => {
