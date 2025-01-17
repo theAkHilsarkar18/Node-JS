@@ -51,6 +51,11 @@ app.delete('/users/:id', (request, response) => {
     });
 });
 
+// to update user
+app.patch('/users/:id', (request, response) => {
+    
+});
+
 // to start server on 8000
 app.listen(8000, () => {
     console.log("Server is started on http://localhost:8000");
