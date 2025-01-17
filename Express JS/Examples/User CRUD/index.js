@@ -35,7 +35,21 @@ app.post('/users', (request, response) => {
 
 });
 
-//
+// to remove user
+app.delete('/users/:id', (request, response) => {
+
+    const id = request.params.id;
+    let i = 0;
+    while (i < users.length) {
+        if (users[i].id == id) {
+            users.splice(i, 1);
+        }
+        i++;
+    }
+    fs.writeFile("./users.json", JSON.stringify(users), (err) => {
+        return response.json({ 'status': 'user deleted on ', 'id': id });
+    });
+});
 
 // to start server on 8000
 app.listen(8000, () => {

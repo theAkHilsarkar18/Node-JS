@@ -7990,29 +7990,5 @@
         "email": "gmarlonrq@indiegogo.com",
         "gender": "Male",
         "job_title": "Chemical Engineer"
-    },
-    {
-        "id": 1000,
-        "first_name": "Vivyan",
-        "last_name": "Orr",
-        "email": "vorrrr@whitehouse.gov",
-        "gender": "Female",
-        "job_title": "Senior Sales Associate"
-    },
-    {
-        "id": "2002",
-        "first_name": "Rajendra",
-        "last_name": "Behra",
-        "email": "raj@kumar.com",
-        "gender": "Male",
-        "job_title": "Master Cheif"
-    },
-    {
-        "id": "2003",
-        "first_name": "Amrendra",
-        "last_name": "Behra",
-        "email": "raj@kumar.com",
-        "gender": "Male",
-        "job_title": "Master Coder"
     }
 ]
